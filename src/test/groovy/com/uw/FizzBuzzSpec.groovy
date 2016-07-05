@@ -18,7 +18,7 @@ class FizzBuzzSpec extends Specification {
         fizzBuzz.evaluate(numberList)
 
         then:
-        sysOut.toString().split('\n')[number -1] == number.toString()
+        sysOut.toString().split(System.lineSeparator())[number -1] == number.toString()
 
         where:
         number << (1..100).findAll{ !isFizz(it) && !isBuzz(it) }
@@ -34,7 +34,7 @@ class FizzBuzzSpec extends Specification {
         fizzBuzz.evaluate(numberlist)
 
         then:
-        sysOut.toString().split('\n')[number -1] == "fizz"
+        sysOut.toString().split(System.lineSeparator())[number -1] == "fizz"
 
         where:
         number << (1..100).findAll{ isFizz(it) && !isBuzz(it)}
@@ -50,7 +50,7 @@ class FizzBuzzSpec extends Specification {
         fizzBuzz.evaluate(numberlist)
 
         then:
-        sysOut.toString().split('\n')[number -1] == "buzz"
+        sysOut.toString().split(System.lineSeparator())[number -1] == "buzz"
 
         where:
         number << (1..100).findAll{ isBuzz(it) &&  !isFizz(it) }
@@ -68,7 +68,7 @@ class FizzBuzzSpec extends Specification {
         fizzBuzz.evaluate(numberlist)
 
         then:
-        sysOut.toString().split('\n')[number -1] == "fizzbuzz"
+        sysOut.toString().split(System.lineSeparator())[number -1] == "fizzbuzz"
 
         where:
         number << (1..100).findAll{ isBuzz(it) &&  isFizz(it)}
