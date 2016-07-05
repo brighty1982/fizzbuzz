@@ -21,7 +21,7 @@ class FizzBuzzSpec extends Specification {
         sysOut.toString().split('\n')[number -1] == number.toString()
 
         where:
-        number << (1..100).findAll{ (it % 3 != 0) && (it % 5 != 0) }
+        number << (1..100).findAll{ !isFizz(it) && !isBuzz(it) }
     }
 
     @Unroll("fizz is #number")
@@ -37,7 +37,7 @@ class FizzBuzzSpec extends Specification {
         sysOut.toString().split('\n')[number -1] == "fizz"
 
         where:
-        number << (1..100).findAll{ it % 3 == 0 && it % 5 != 0}
+        number << (1..100).findAll{ isFizz(it) && !isBuzz(it)}
     }
 
     @Unroll("buzz is  #number")
@@ -53,8 +53,10 @@ class FizzBuzzSpec extends Specification {
         sysOut.toString().split('\n')[number -1] == "buzz"
 
         where:
-        number << (1..100).findAll{ it % 5 == 0 &&  it % 3 != 0 }
+        number << (1..100).findAll{ isBuzz(it) &&  !isFizz(it) }
     }
+
+
 
     @Unroll("fizzbuzz  #number")
     def "values divisible by 3 and 5 are printed as fizzbuzz"(){
@@ -69,10 +71,17 @@ class FizzBuzzSpec extends Specification {
         sysOut.toString().split('\n')[number -1] == "fizzbuzz"
 
         where:
-        number << (1..100).findAll{ it % 5 == 0 &&  it % 3 == 0 }
+        number << (1..100).findAll{ isBuzz(it) &&  isFizz(it)}
     }
 
 
+    private boolean isFizz(int it) {
+        it % 3 == 0
+    }
+
+    private boolean isBuzz(int it) {
+        it % 5 == 0
+    }
 
     private final ByteArrayOutputStream sysOut = new ByteArrayOutputStream();
     private final PrintStream originalSysOut = System.out;

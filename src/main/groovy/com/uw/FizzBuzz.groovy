@@ -13,7 +13,7 @@ class FizzBuzz {
                     break
                 case { it % 3 == 0 }:
                     println "fizz"
-                    breakgi
+                    break
                 case { it % 5 == 0 }:
                     println "buzz"
                     break
