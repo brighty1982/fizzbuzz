@@ -86,7 +86,6 @@ class FizzBuzzSpec extends Specification {
     private final ByteArrayOutputStream sysOut = new ByteArrayOutputStream();
     private final PrintStream originalSysOut = System.out;
 
-
     def setup(){
         System.setOut(new PrintStream(sysOut));
     }
