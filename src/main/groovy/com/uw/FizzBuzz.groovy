@@ -8,13 +8,13 @@ class FizzBuzz {
     def evaluate(def integers) {
         integers.forEach {
             switch (it) {
-                case { it % 3 == 0 && it % 5 == 0 }:
+                case { isFizz(it) && isBuzz(it) }:
                     println "fizzbuzz"
                     break
-                case { it % 3 == 0 }:
+                case { isFizz(it) }:
                     println "fizz"
                     break
-                case { it % 5 == 0 }:
+                case { isBuzz(it) }:
                     println "buzz"
                     break
                 default:
@@ -22,6 +22,14 @@ class FizzBuzz {
                     break
             }
         }
+    }
+
+    boolean isFizz(def value){
+        value % 3 == 0
+    }
+
+    boolean isBuzz(def value){
+        value % 5 == 0
     }
 
 }
